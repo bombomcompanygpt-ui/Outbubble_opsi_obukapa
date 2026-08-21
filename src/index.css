@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-brand: "Poppins", sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans antialiased bg-[#f4f8fc] text-slate-800 selection:bg-indigo-600 selection:text-white leading-relaxed tracking-normal;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight font-extrabold text-slate-900;
+  }
+
+  p {
+    @apply leading-relaxed text-slate-700;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/60 shadow-[0_10px_35px_0_rgba(15,23,42,0.06)];
+  }
+  
+  .bubble-shape {
+    @apply rounded-[32px] md:rounded-[48px];
+  }
+  
+  .bubble-button {
+    @apply rounded-full px-6 py-3 font-extrabold transition-all duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600;
+  }
+
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500;
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600;
+  }
+
+  .theme-dark {
+    @apply bg-[#030b20] text-slate-100;
+  }
+
+  .theme-light {
+    @apply bg-[#e0ecff] text-[#031466];
+  }
+}
+
+.prose {
+  @apply text-slate-700 leading-[1.75] font-normal;
+}
+
+.prose p {
+  @apply mb-4 text-slate-700 text-sm sm:text-base;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  @apply text-slate-900 font-black mt-6 mb-3 tracking-tight;
+}
+
+.prose strong {
+  @apply text-slate-900 font-extrabold;
+}
+
+.prose ul, .prose ol {
+  @apply my-3 pl-5 space-y-1.5;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
